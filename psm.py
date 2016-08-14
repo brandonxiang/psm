@@ -17,10 +17,10 @@ def use(name):
     if name not in sources.keys():
         print("Source name is not in the list.")
     else:
-        _create_file(name)
+        _write_file(name)
         print("change to %s"%(name))
     
-def _create_file(name):
+def _write_file(name):
     path = os.path.expanduser("~/.pip/pip.conf")
     file = os.path.dirname(path)
     if not os.path.exists(file):
@@ -31,7 +31,7 @@ def _create_file(name):
 index-url = %s
 [install]
 trusted-host = %s
-        """%(sources[name],sources[name])
+        """%(sources[name],sources[name].split('/')[2])
         fp.write(str)
 
 def main():
