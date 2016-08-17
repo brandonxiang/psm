@@ -1,6 +1,21 @@
+"""Naval Fate.
+
+Usage:
+  psm.py ls 
+  psm.py use <name>
+  psm.py (-h | --help)
+  psm.py (-v | --version)
+
+Options:
+  -h --help        Show this screen.
+  -v --version     Show version.
+
+"""
+
 from __future__ import print_function
 import argparse
 import os
+from docopt import docopt
 
 
 sources = {
@@ -10,15 +25,17 @@ sources = {
 }
 
 def list():
+    print("\n")
     for key in sources:
-        print(key,sources[key])
+        print(key,"\t",sources[key])
+    print("\n")
 
 def use(name):
     if name not in sources.keys():
-        print("Source name is not in the list.")
+        print("\nSource name is not in the list.\n")
     else:
         _write_file(name)
-        print("change to %s"%(name))
+        print("\nSource is changed to %s.\n"%(name))
     
 def _write_file(name):
     path = os.path.expanduser("~/.pip/pip.conf")
@@ -26,25 +43,16 @@ def _write_file(name):
     if not os.path.exists(file):
         os.mkdir(file)
     with open(path,'w') as fp:
-        str = """
-[global]
-index-url = %s
-[install]
-trusted-host = %s
-        """%(sources[name],sources[name].split('/')[2])
+        str = "[global]\nindex-url = %s\n[install]\ntrusted-host = %s"%(
+            sources[name], sources[name].split('/')[2])
         fp.write(str)
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-u","--use", help="change pypi source")
-    parser.add_argument("-l","--list", help="list all pypi source",
-                        action="store_true")
-                        
-    args = parser.parse_args()
-    if args.list:
+    arguments = docopt(__doc__, version='0.0.1')
+    if arguments['ls']:
         list()
-    if args.use:
-        use(args.use)
+    if arguments['use']:
+        use(arguments['<name>'])
         
 
 if __name__ == '__main__':
