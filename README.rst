@@ -1,26 +1,26 @@
-# psm
+psm
+===============================
 
 Pypi Source Manager: fast switch between different Pypi Source: pypi, double, aliyun
 
 
 This package is inspired by [Pana/nrm](https://github.com/Pana/nrm).
 
-## Installation
+#. Installation
 
 ```
 pip install psm
 ```
 
+#. Usage
 
-## Usage
-
-### list all pypi source
+#. list all pypi source
 
 ```
 python -m psm ls
 ```
 
-### change pypi source
+#. change pypi source
 
 ```
 python -m psm use douban
