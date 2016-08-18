@@ -13,9 +13,10 @@ Options:
 """
 
 from __future__ import print_function
-import os
-from docopt import docopt
 
+import os
+
+from docopt import docopt
 
 sources = {
     "pypi":"https://pypi.python.org/simple/",
@@ -23,7 +24,7 @@ sources = {
     "aliyun":"http://mirrors.aliyun.com/pypi/simple/"
 }
 
-def list():
+def list_source():
     print("\n")
     for key in sources:
         print(key,"\t",sources[key])
@@ -46,13 +47,13 @@ def _write_file(name):
             sources[name], sources[name].split('/')[2])
         fp.write(str)
 
-def main():
+def docopt_ctrl():
     arguments = docopt(__doc__, version='0.0.1')
     if arguments['ls']:
-        list()
+        list_source()
     if arguments['use']:
         use(arguments['<name>'])
         
 
 if __name__ == '__main__':
-    main()
+    docopt_ctrl()
