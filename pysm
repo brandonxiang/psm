@@ -1,7 +1,0 @@
-from _psm.psm import docopt_ctrl
-
-def main():
-    docopt_ctrl()
-
-if __name__ == '__main__':
-    main()

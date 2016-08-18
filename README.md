@@ -17,11 +17,11 @@ pip install psm
 ### list all pypi source
 
 ```
-python -m psm ls
+psm ls
 ```
 
 ### change pypi source
 
 ```
-python -m psm use douban
+psm use douban
 ```

@@ -12,12 +12,12 @@ def read(fname):
 NAME = "psm"
 PACKAGES = ["psm"]
 DESCRIPTION = "Pypi Source Manager: fast switch between different Pypi Source: pypi, double, aliyun."
-LONG_DESCRIPTION = read("README.md")
+LONG_DESCRIPTION = open('README.md').read()
 KEYWORDS = "source python package"
 AUTHOR = "brandonxiang"
 AUTHOR_EMAIL = "1542453460@qq.com"
 URL = "http://www.jianshu.com/users/64467c788eb7"
-VERSION = "0.0.2"
+VERSION = "0.0.10"
 LICENSE = "MIT"
  
 setup(
@@ -31,12 +31,16 @@ setup(
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
     ],
-    packages = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    py_modules=['psm'],
     keywords = KEYWORDS,
     author = AUTHOR,
     author_email = AUTHOR_EMAIL,
     url = URL,
     license = LICENSE,
+    install_requires=[
+        'docopt>=0.6.2',
+    ],
+    scripts=['psm'],
     # packages = PACKAGES,
     include_package_data=True,
     zip_safe=True,

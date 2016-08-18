@@ -1,10 +1,10 @@
 """Naval Fate.
 
 Usage:
-  psm.py ls 
-  psm.py use <name>
-  psm.py (-h | --help)
-  psm.py (-v | --version)
+  psm ls 
+  psm use <name>
+  psm (-h | --help)
+  psm (-v | --version)
 
 Options:
   -h --help        Show this screen.
@@ -47,7 +47,7 @@ def _write_file(name):
             sources[name], sources[name].split('/')[2])
         fp.write(str)
 
-def docopt_ctrl():
+def main():
     arguments = docopt(__doc__, version='0.0.1')
     if arguments['ls']:
         list_source()
@@ -56,4 +56,4 @@ def docopt_ctrl():
         
 
 if __name__ == '__main__':
-    docopt_ctrl()
+    main()
