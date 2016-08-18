@@ -1,8 +1,8 @@
 """Naval Fate.
 
 Usage:
-  psm ls 
-  psm use <name>
+  psm ls                 list all pypi source
+  psm use <name>         change pypi source
   psm (-h | --help)
   psm (-v | --version)
 
