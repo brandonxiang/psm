@@ -26,6 +26,12 @@ psm ls
 psm use douban
 ```
 
+### show current source
+
+```
+psm show
+```
+
 ## LICENSE
 
 [MIT](LICENSE)
