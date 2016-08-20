@@ -1,20 +1,23 @@
 """Naval Fate.
-
 Usage:
-  psm ls                 list all pypi source
-  psm use <name>         change pypi source
+  psm ls
+  psm use <name>
+  psm show
   psm (-h | --help)
   psm (-v | --version)
-
 Options:
   -h --help        Show this screen.
   -v --version     Show version.
-
 """
 
 from __future__ import print_function
 
 import os
+try:
+    import configparser
+except:
+    import ConfigParser as configparser
+
 
 from docopt import docopt
 
@@ -47,12 +50,27 @@ def _write_file(name):
             sources[name], sources[name].split('/')[2])
         fp.write(str)
 
+def show():
+    conf = configparser.ConfigParser()
+    path = os.path.expanduser("~/.pip/pip.conf")
+    conf.read(path)
+    index_url = conf.get("global", "index-url")
+    for key in sources:
+        if index_url == sources[key]:
+            print("\nCurrent source is %s\n"%key)
+            break
+    else:
+         print("\nUnknown source\n")
+
 def main():
-    arguments = docopt(__doc__, version='0.0.1')
+    arguments = docopt(__doc__, version='0.1.0')
+
     if arguments['ls']:
         list_source()
     if arguments['use']:
         use(arguments['<name>'])
+    if arguments['show']:
+        show()
         
 
 if __name__ == '__main__':

@@ -17,7 +17,7 @@ KEYWORDS = "source python package"
 AUTHOR = "brandonxiang"
 AUTHOR_EMAIL = "1542453460@qq.com"
 URL = "http://www.jianshu.com/users/64467c788eb7"
-VERSION = "0.0.10"
+VERSION = "0.1.0"
 LICENSE = "MIT"
  
 setup(
