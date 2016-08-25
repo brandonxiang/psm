@@ -14,22 +14,43 @@ pip install psm
 
 ## Usage
 
-### list all pypi source
+### Unix
+
+##### list all pypi source
 
 ```
 psm ls
 ```
 
-### change pypi source
+##### change pypi source
 
 ```
 psm use douban
 ```
 
-### show current source
+##### show current source
 
 ```
 psm show
+```
+### Windows 
+
+##### list all pypi source
+
+```
+python -m psm ls
+```
+
+##### change pypi source
+
+```
+python -m psm use douban
+```
+
+##### show current source
+
+```
+python -m psm show
 ```
 
 ## LICENSE
