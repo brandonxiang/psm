@@ -24,7 +24,8 @@ from docopt import docopt
 sources = {
     "pypi":"https://pypi.python.org/simple/",
     "douban":"http://pypi.douban.com/simple/",
-    "aliyun":"http://mirrors.aliyun.com/pypi/simple/"
+    "aliyun":"http://mirrors.aliyun.com/pypi/simple/",
+    "qinghua":"https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
 }
 
 def list_source():
