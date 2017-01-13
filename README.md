@@ -5,6 +5,8 @@ Pypi Source Manager: fast switch between different Pypi Source: pypi, double, al
 
 This package is inspired by [Pana/nrm](https://github.com/Pana/nrm).
 
+## [中文文档](Readme_CN.md)
+
 ## Installation
 
 ```
