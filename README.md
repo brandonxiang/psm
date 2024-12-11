@@ -1,6 +1,6 @@
 # psm
 
-Pypi Source Manager: fast switch between different Pypi Source: pypi, double, aliyun, qinghua.
+Pypi Source Manager: fast switch between different Pypi Source: pypi, double, aliyun, tsu,.
 
 
 This package is inspired by [Pana/nrm](https://github.com/Pana/nrm).
@@ -30,31 +30,32 @@ psm ls
 psm use douban
 ```
 
-or 'aliyun' and 'qinghua'
+or 'aliyun' and 'thu'
 
 ##### show current source
 
 ```
-psm show
+psm current
 ```
+
+##### add a new source
+
+```
+psm add my_source https://pypi.python.org/simple
+```
+
+##### delete a source
+
+```
+psm delete my_source
+```
+
 ### Windows 
 
 ##### list all pypi source
 
 ```
 python -m psm ls
-```
-
-##### change pypi source
-
-```
-python -m psm use douban
-```
-
-##### show current source
-
-```
-python -m psm show
 ```
 
 ## LICENSE

@@ -32,7 +32,19 @@ psm use douban
 ##### 显示当前源
 
 ```
-psm show
+psm current
+```
+
+##### 添加当前源
+
+```
+psm add my_source https://pypi.python.org/simple
+```
+
+##### 删除当前源
+
+```
+psm delete my_source
 ```
 
 ### Windows 系
@@ -41,18 +53,6 @@ psm show
 
 ```
 python -m psm ls
-```
-
-##### 更换pypi源
-
-```
-python -m psm use douban
-```
-
-##### 显示当前源
-
-```
-python -m psm show
 ```
 
 ### 路书
