@@ -5,6 +5,7 @@ Usage:
   psm current
   psm add <name> <url>
   psm delete <name>
+  psm test [<name>]
   psm (-h | --help)
   psm (-v | --version)
 Options:
@@ -15,9 +16,12 @@ Options:
 from __future__ import print_function
 import json
 import os
+from re import A
+import time
 from typing import Dict
 from docopt import docopt
 import configparser
+import urllib.request
 
 
 PSMRC = os.path.expanduser("~/.psmrc")
@@ -29,7 +33,6 @@ sources = {
     "thu1":"https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/",
     "thu2": 'https://pypi.tuna.tsinghua.edu.cn/simple/',
     "ustc":"http://pypi.mirrors.ustc.edu.cn/simple/",
-
 }
 
 def list_source():
@@ -65,7 +68,37 @@ def delete(name: str):
         del _sources[name]
         _write_config(_sources)
         print("\nSource is deleted.\n")
-    
+
+def test(name: str | None):
+    print("\n")
+    _sources = _read_config()
+    if name is None:
+        for key in _sources:
+            url = _sources[key] + 'pip'
+            res  = _test_url(url, key)
+            print(f"{res.get('name')}\t{res.get('time')}")
+
+    else: 
+        url = _sources[name] + 'pip'
+        res = _test_url(url, name)
+        print(f"{res.get('name')}\t{res.get('time')}")
+    print("\n")
+
+
+
+def _test_url(url: str, name: str):
+    try:
+        start_time = time.time()
+        with urllib.request.urlopen(url, timeout = 5) as response:
+            response.read()
+        end_time = time.time()
+        duration = end_time - start_time
+        return {"name": name, "time": f"{duration* 1000:.2f} ms"}
+    except Exception as e:
+        return {"name": name, "time": "Fetch failed"}
+  
+
+
 def _write_pip_conf(name: str):
     _sources = _read_config()
     path = os.path.expanduser("~/.pip/pip.conf")
@@ -121,7 +154,7 @@ def current():
          print("\nUnknown source\n")
 
 def main():
-    arguments = docopt(__doc__, version='0.2.0')
+    arguments = docopt(__doc__, version='0.3.0')
 
     if arguments['ls']:
         list_source()
@@ -133,6 +166,8 @@ def main():
         add(arguments['<name>'], arguments['<url>'])
     if arguments['delete']:
         delete(arguments['<name>'])
+    if arguments['test']:
+        test(arguments['<name>'])
 
 if __name__ == '__main__':
     main()

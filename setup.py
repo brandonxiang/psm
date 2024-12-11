@@ -13,11 +13,11 @@ NAME = "psm"
 PACKAGES = ["psm"]
 DESCRIPTION = "Pypi Source Manager: fast switch between different Pypi Source: pypi, double, aliyun."
 LONG_DESCRIPTION = open('README.md').read()
-KEYWORDS = "source python package"
+KEYWORDS = "python source package"
 AUTHOR = "brandonxiang"
 AUTHOR_EMAIL = "1542453460@qq.com"
 URL = "http://www.jianshu.com/users/64467c788eb7"
-VERSION = "0.1.0"
+VERSION = "0.3.0"
 LICENSE = "MIT"
  
 setup(
@@ -28,9 +28,11 @@ setup(
     classifiers = [
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3.5',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
     ],
+    python_requires='>=3.5',
     py_modules=['psm'],
     keywords = KEYWORDS,
     author = AUTHOR,
@@ -39,6 +41,7 @@ setup(
     license = LICENSE,
     install_requires=[
         'docopt>=0.6.2',
+        'configparser>=7.1.0'
     ],
     scripts=['psm'],
     # packages = PACKAGES,
